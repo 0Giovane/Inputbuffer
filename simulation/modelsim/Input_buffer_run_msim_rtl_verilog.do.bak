@@ -1,0 +1,12 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+C:/Users/keduv/OneDrive/Desktop/LAAB {C:/Users/keduv/OneDrive/Desktop/LAAB/ram_fsm_ip.v}
+vlog -vlog01compat -work work +incdir+C:/Users/keduv/OneDrive/Desktop/LAAB {C:/Users/keduv/OneDrive/Desktop/LAAB/input_buffer_fifo.v}
+vlog -vlog01compat -work work +incdir+C:/Users/keduv/OneDrive/Desktop/LAAB {C:/Users/keduv/OneDrive/Desktop/LAAB/top_controller.v}
+vcom -93 -work work {C:/Users/keduv/OneDrive/Desktop/LAAB/memoria2.vhd}
+

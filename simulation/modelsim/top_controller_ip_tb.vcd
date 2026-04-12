@@ -1,0 +1,874 @@
+$date
+	Sun Apr 12 20:23:05 2026
+$end
+$version
+	ModelSim Version 2020.1
+$end
+$timescale
+	1ps
+$end
+
+$scope module top_controller_ip_tb $end
+$var parameter 32 ! BUF_DEPTH $end
+$var parameter 32 " OUT_WIDTH $end
+$var reg 1 # clk $end
+$var reg 1 $ rst_n $end
+$var reg 14 % addr_in [13:0] $end
+$var reg 64 & din_in [63:0] $end
+$var reg 1 ' req_read $end
+$var reg 1 ( req_write $end
+$var wire 1 ) data_out [7] $end
+$var wire 1 * data_out [6] $end
+$var wire 1 + data_out [5] $end
+$var wire 1 , data_out [4] $end
+$var wire 1 - data_out [3] $end
+$var wire 1 . data_out [2] $end
+$var wire 1 / data_out [1] $end
+$var wire 1 0 data_out [0] $end
+$var wire 1 1 data_valid $end
+$var wire 1 2 fifo_full $end
+$var wire 1 3 fifo_empty $end
+$var wire 1 4 ram_ready $end
+$var integer 32 5 i $end
+
+$scope task pulse_write $end
+$var reg 14 6 a [13:0] $end
+$var reg 64 7 d [63:0] $end
+$upscope $end
+
+$scope task pulse_read $end
+$var reg 14 8 a [13:0] $end
+$upscope $end
+
+$scope module dut $end
+$var parameter 32 9 BUF_DEPTH $end
+$var parameter 32 : OUT_WIDTH $end
+$var parameter 3 ; IDLE $end
+$var parameter 3 < WRITE_OP $end
+$var parameter 3 = READ_OP $end
+$var parameter 3 > WAIT_RAM $end
+$var parameter 3 ? DONE $end
+$var wire 1 @ clk $end
+$var wire 1 A rst_n $end
+$var wire 1 B addr_in [13] $end
+$var wire 1 C addr_in [12] $end
+$var wire 1 D addr_in [11] $end
+$var wire 1 E addr_in [10] $end
+$var wire 1 F addr_in [9] $end
+$var wire 1 G addr_in [8] $end
+$var wire 1 H addr_in [7] $end
+$var wire 1 I addr_in [6] $end
+$var wire 1 J addr_in [5] $end
+$var wire 1 K addr_in [4] $end
+$var wire 1 L addr_in [3] $end
+$var wire 1 M addr_in [2] $end
+$var wire 1 N addr_in [1] $end
+$var wire 1 O addr_in [0] $end
+$var wire 1 P din_in [63] $end
+$var wire 1 Q din_in [62] $end
+$var wire 1 R din_in [61] $end
+$var wire 1 S din_in [60] $end
+$var wire 1 T din_in [59] $end
+$var wire 1 U din_in [58] $end
+$var wire 1 V din_in [57] $end
+$var wire 1 W din_in [56] $end
+$var wire 1 X din_in [55] $end
+$var wire 1 Y din_in [54] $end
+$var wire 1 Z din_in [53] $end
+$var wire 1 [ din_in [52] $end
+$var wire 1 \ din_in [51] $end
+$var wire 1 ] din_in [50] $end
+$var wire 1 ^ din_in [49] $end
+$var wire 1 _ din_in [48] $end
+$var wire 1 ` din_in [47] $end
+$var wire 1 a din_in [46] $end
+$var wire 1 b din_in [45] $end
+$var wire 1 c din_in [44] $end
+$var wire 1 d din_in [43] $end
+$var wire 1 e din_in [42] $end
+$var wire 1 f din_in [41] $end
+$var wire 1 g din_in [40] $end
+$var wire 1 h din_in [39] $end
+$var wire 1 i din_in [38] $end
+$var wire 1 j din_in [37] $end
+$var wire 1 k din_in [36] $end
+$var wire 1 l din_in [35] $end
+$var wire 1 m din_in [34] $end
+$var wire 1 n din_in [33] $end
+$var wire 1 o din_in [32] $end
+$var wire 1 p din_in [31] $end
+$var wire 1 q din_in [30] $end
+$var wire 1 r din_in [29] $end
+$var wire 1 s din_in [28] $end
+$var wire 1 t din_in [27] $end
+$var wire 1 u din_in [26] $end
+$var wire 1 v din_in [25] $end
+$var wire 1 w din_in [24] $end
+$var wire 1 x din_in [23] $end
+$var wire 1 y din_in [22] $end
+$var wire 1 z din_in [21] $end
+$var wire 1 { din_in [20] $end
+$var wire 1 | din_in [19] $end
+$var wire 1 } din_in [18] $end
+$var wire 1 ~ din_in [17] $end
+$var wire 1 !! din_in [16] $end
+$var wire 1 "! din_in [15] $end
+$var wire 1 #! din_in [14] $end
+$var wire 1 $! din_in [13] $end
+$var wire 1 %! din_in [12] $end
+$var wire 1 &! din_in [11] $end
+$var wire 1 '! din_in [10] $end
+$var wire 1 (! din_in [9] $end
+$var wire 1 )! din_in [8] $end
+$var wire 1 *! din_in [7] $end
+$var wire 1 +! din_in [6] $end
+$var wire 1 ,! din_in [5] $end
+$var wire 1 -! din_in [4] $end
+$var wire 1 .! din_in [3] $end
+$var wire 1 /! din_in [2] $end
+$var wire 1 0! din_in [1] $end
+$var wire 1 1! din_in [0] $end
+$var wire 1 2! req_read $end
+$var wire 1 3! req_write $end
+$var wire 1 ) data_out [7] $end
+$var wire 1 * data_out [6] $end
+$var wire 1 + data_out [5] $end
+$var wire 1 , data_out [4] $end
+$var wire 1 - data_out [3] $end
+$var wire 1 . data_out [2] $end
+$var wire 1 / data_out [1] $end
+$var wire 1 0 data_out [0] $end
+$var wire 1 1 data_valid $end
+$var wire 1 2 fifo_full $end
+$var wire 1 3 fifo_empty $end
+$var wire 1 4 ram_ready $end
+$var reg 3 4! state [2:0] $end
+$var reg 4 5! wait_cnt [3:0] $end
+$var reg 64 6! ram_q [63:0] $end
+$var reg 1 7! fifo_wr_en $end
+$var wire 1 8! fifo_rd_en $end
+
+$scope module fifo_inst $end
+$var parameter 32 9! IN_WIDTH $end
+$var parameter 32 :! BUF_DEPTH $end
+$var parameter 32 ;! OUT_WIDTH $end
+$var parameter 32 <! ADDR_W $end
+$var wire 1 @ clk $end
+$var wire 1 A rst_n $end
+$var wire 1 =! push_data [63] $end
+$var wire 1 >! push_data [62] $end
+$var wire 1 ?! push_data [61] $end
+$var wire 1 @! push_data [60] $end
+$var wire 1 A! push_data [59] $end
+$var wire 1 B! push_data [58] $end
+$var wire 1 C! push_data [57] $end
+$var wire 1 D! push_data [56] $end
+$var wire 1 E! push_data [55] $end
+$var wire 1 F! push_data [54] $end
+$var wire 1 G! push_data [53] $end
+$var wire 1 H! push_data [52] $end
+$var wire 1 I! push_data [51] $end
+$var wire 1 J! push_data [50] $end
+$var wire 1 K! push_data [49] $end
+$var wire 1 L! push_data [48] $end
+$var wire 1 M! push_data [47] $end
+$var wire 1 N! push_data [46] $end
+$var wire 1 O! push_data [45] $end
+$var wire 1 P! push_data [44] $end
+$var wire 1 Q! push_data [43] $end
+$var wire 1 R! push_data [42] $end
+$var wire 1 S! push_data [41] $end
+$var wire 1 T! push_data [40] $end
+$var wire 1 U! push_data [39] $end
+$var wire 1 V! push_data [38] $end
+$var wire 1 W! push_data [37] $end
+$var wire 1 X! push_data [36] $end
+$var wire 1 Y! push_data [35] $end
+$var wire 1 Z! push_data [34] $end
+$var wire 1 [! push_data [33] $end
+$var wire 1 \! push_data [32] $end
+$var wire 1 ]! push_data [31] $end
+$var wire 1 ^! push_data [30] $end
+$var wire 1 _! push_data [29] $end
+$var wire 1 `! push_data [28] $end
+$var wire 1 a! push_data [27] $end
+$var wire 1 b! push_data [26] $end
+$var wire 1 c! push_data [25] $end
+$var wire 1 d! push_data [24] $end
+$var wire 1 e! push_data [23] $end
+$var wire 1 f! push_data [22] $end
+$var wire 1 g! push_data [21] $end
+$var wire 1 h! push_data [20] $end
+$var wire 1 i! push_data [19] $end
+$var wire 1 j! push_data [18] $end
+$var wire 1 k! push_data [17] $end
+$var wire 1 l! push_data [16] $end
+$var wire 1 m! push_data [15] $end
+$var wire 1 n! push_data [14] $end
+$var wire 1 o! push_data [13] $end
+$var wire 1 p! push_data [12] $end
+$var wire 1 q! push_data [11] $end
+$var wire 1 r! push_data [10] $end
+$var wire 1 s! push_data [9] $end
+$var wire 1 t! push_data [8] $end
+$var wire 1 u! push_data [7] $end
+$var wire 1 v! push_data [6] $end
+$var wire 1 w! push_data [5] $end
+$var wire 1 x! push_data [4] $end
+$var wire 1 y! push_data [3] $end
+$var wire 1 z! push_data [2] $end
+$var wire 1 {! push_data [1] $end
+$var wire 1 |! push_data [0] $end
+$var wire 1 }! wr_en $end
+$var wire 1 8! rd_en $end
+$var reg 8 ~! data_out [7:0] $end
+$var reg 1 !" data_valid $end
+$var wire 1 2 full $end
+$var wire 1 3 empty $end
+$var reg 3 "" wr_ptr [2:0] $end
+$var reg 3 #" rd_ptr [2:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0#
+0$
+b0 %
+b0 &
+0'
+0(
+b0 4!
+b0 5!
+b0 6!
+07!
+b0 ~!
+0!"
+b0 ""
+b0 #"
+bx 6
+bx 7
+bx 8
+b100 !
+b1000 "
+b100 9
+b1000 :
+b0 ;
+b1 <
+b10 =
+b11 >
+b100 ?
+b1000000 9!
+b100 :!
+b1000 ;!
+b10 <!
+bx 5
+00
+0/
+0.
+0-
+0,
+0+
+0*
+0)
+01
+02
+13
+14
+08!
+03!
+02!
+01!
+00!
+0/!
+0.!
+0-!
+0,!
+0+!
+0*!
+0)!
+0(!
+0'!
+0&!
+0%!
+0$!
+0#!
+0"!
+0!!
+0~
+0}
+0|
+0{
+0z
+0y
+0x
+0w
+0v
+0u
+0t
+0s
+0r
+0q
+0p
+0o
+0n
+0m
+0l
+0k
+0j
+0i
+0h
+0g
+0f
+0e
+0d
+0c
+0b
+0a
+0`
+0_
+0^
+0]
+0\
+0[
+0Z
+0Y
+0X
+0W
+0V
+0U
+0T
+0S
+0R
+0Q
+0P
+0O
+0N
+0M
+0L
+0K
+0J
+0I
+0H
+0G
+0F
+0E
+0D
+0C
+0B
+0A
+0@
+0}!
+0|!
+0{!
+0z!
+0y!
+0x!
+0w!
+0v!
+0u!
+0t!
+0s!
+0r!
+0q!
+0p!
+0o!
+0n!
+0m!
+0l!
+0k!
+0j!
+0i!
+0h!
+0g!
+0f!
+0e!
+0d!
+0c!
+0b!
+0a!
+0`!
+0_!
+0^!
+0]!
+0\!
+0[!
+0Z!
+0Y!
+0X!
+0W!
+0V!
+0U!
+0T!
+0S!
+0R!
+0Q!
+0P!
+0O!
+0N!
+0M!
+0L!
+0K!
+0J!
+0I!
+0H!
+0G!
+0F!
+0E!
+0D!
+0C!
+0B!
+0A!
+0@!
+0?!
+0>!
+0=!
+$end
+#10000
+1#
+1@
+#20000
+0#
+0@
+#30000
+1#
+1@
+#40000
+0#
+0@
+#50000
+1#
+1@
+#60000
+0#
+0@
+#70000
+1#
+1@
+1$
+1A
+#80000
+0#
+0@
+#90000
+1#
+1@
+b10000 6
+b1101111010101101101111101110111111001010111111100000000000010001 7
+b10000 %
+b1101111010101101101111101110111111001010111111100000000000010001 &
+1(
+11!
+1-!
+1~
+1}
+1|
+1{
+1z
+1y
+1x
+1v
+1t
+1q
+1p
+1o
+1n
+1m
+1l
+1j
+1i
+1h
+1f
+1e
+1d
+1c
+1b
+1`
+1_
+1]
+1\
+1Z
+1X
+1V
+1U
+1T
+1S
+1Q
+1P
+1K
+13!
+#100000
+0#
+0@
+#110000
+1#
+1@
+0(
+03!
+b1 4!
+04
+#120000
+0#
+0@
+#130000
+1#
+1@
+b10000 8
+b0 &
+1'
+01!
+0-!
+0~
+0}
+0|
+0{
+0z
+0y
+0x
+0v
+0t
+0q
+0p
+0o
+0n
+0m
+0l
+0j
+0i
+0h
+0f
+0e
+0d
+0c
+0b
+0`
+0_
+0]
+0\
+0Z
+0X
+0V
+0U
+0T
+0S
+0Q
+0P
+12!
+b100 4!
+#140000
+0#
+0@
+#150000
+1#
+1@
+0'
+02!
+b0 4!
+14
+#160000
+0#
+0@
+#170000
+1#
+1@
+#180000
+0#
+0@
+#190000
+1#
+1@
+#200000
+0#
+0@
+#210000
+1#
+1@
+#220000
+0#
+0@
+#230000
+1#
+1@
+#240000
+0#
+0@
+#250000
+1#
+1@
+#260000
+0#
+0@
+#270000
+1#
+1@
+#280000
+0#
+0@
+#290000
+1#
+1@
+#300000
+0#
+0@
+#310000
+1#
+1@
+#320000
+0#
+0@
+#330000
+1#
+1@
+#340000
+0#
+0@
+#350000
+1#
+1@
+#360000
+0#
+0@
+#370000
+1#
+1@
+#380000
+0#
+0@
+#390000
+1#
+1@
+#400000
+0#
+0@
+#410000
+1#
+1@
+#420000
+0#
+0@
+#430000
+1#
+1@
+#440000
+0#
+0@
+#450000
+1#
+1@
+#460000
+0#
+0@
+#470000
+1#
+1@
+#480000
+0#
+0@
+#490000
+1#
+1@
+#500000
+0#
+0@
+#510000
+1#
+1@
+#520000
+0#
+0@
+#530000
+1#
+1@
+#540000
+0#
+0@
+#550000
+1#
+1@
+#560000
+0#
+0@
+#570000
+1#
+1@
+#580000
+0#
+0@
+#590000
+1#
+1@
+#600000
+0#
+0@
+#610000
+1#
+1@
+#620000
+0#
+0@
+#630000
+1#
+1@
+#640000
+0#
+0@
+#650000
+1#
+1@
+#660000
+0#
+0@
+#670000
+1#
+1@
+#680000
+0#
+0@
+#690000
+1#
+1@
+#700000
+0#
+0@
+#710000
+1#
+1@
+#720000
+0#
+0@
+#730000
+1#
+1@
+#740000
+0#
+0@
+#750000
+1#
+1@
+#760000
+0#
+0@
+#770000
+1#
+1@
+#780000
+0#
+0@
+#790000
+1#
+1@
+#800000
+0#
+0@
+#810000
+1#
+1@
+#820000
+0#
+0@
+#830000
+1#
+1@
+#840000
+0#
+0@
+#850000
+1#
+1@
+#860000
+0#
+0@
+#870000
+1#
+1@
+#880000
+0#
+0@
+#890000
+1#
+1@
+#900000
+0#
+0@
+#910000
+1#
+1@
+#920000
+0#
+0@
+#930000
+1#
+1@
+#940000
+0#
+0@
+#950000
+1#
+1@
+#960000
+0#
+0@
+#970000
+1#
+1@
+#980000
+0#
+0@
+#990000
+1#
+1@
+#1000000
+0#
+0@
+#1010000
+1#
+1@
+#1020000
+0#
+0@
+#1030000
+1#
+1@
+#1040000
+0#
+0@
+#1050000
+1#
+1@
+#1060000
+0#
+0@
+#1070000
+1#
+1@
+#1080000
+0#
+0@
+#1090000
+1#
+1@
+#1100000
+0#
+0@
+#1110000
+1#
+1@
+#1120000
+0#
+0@
+#1130000
+1#
+1@
+#1140000
+0#
+0@
+#1150000
+1#
+1@
+#1160000
+0#
+0@
+#1170000
+1#
+1@

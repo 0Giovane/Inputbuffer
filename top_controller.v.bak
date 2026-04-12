@@ -1,0 +1,151 @@
+// ============================================================
+//  3.  Top Controller — adaptado para IP Single-Port
+//
+//  Mudanças em relação à versão anterior:
+//  · Instancia ram_fsm_ip (não ram_fsm)
+//  · Conecta os 5 pinos do IP (ram_wren/rden/addr/data/q)
+//    ao stub ou ao .qip real do Quartus
+//  · A FSM de orquestração (CTRL_*) permanece idêntica;
+//    a latência extra do IP já é absorvida internamente
+//    pela ram_fsm_ip (estado READ_WAIT), então o sinal
+//    ram_ready continua chegando no mesmo ponto lógico.
+// ============================================================
+module top_controller #(
+    parameter BUF_DEPTH = 16,
+    parameter OUT_WIDTH = 8
+)(
+    input  wire        clk,
+    input  wire        rst_n,
+
+    // Interface com o host
+    input  wire [13:0] addr_in,
+    input  wire [63:0] din_in,
+    input  wire        req_read,
+    input  wire        req_write,
+
+    // Saída para o bloco downstream
+    output wire [OUT_WIDTH-1:0] data_out,
+    output wire                 data_valid,
+
+    // Status
+    output wire        fifo_full,
+    output wire        fifo_empty,
+    output wire        ram_ready
+);
+
+    // ── Sinais internos ──────────────────────────────────────
+    reg        ram_cs, ram_we, ram_oe;
+    wire [63:0] ram_dout;
+    wire        ram_rdy;
+
+    // Sinais do IP (fio entre FSM e instância do IP)
+    wire        ip_wren, ip_rden;
+    wire [13:0] ip_addr;
+    wire [63:0] ip_data, ip_q;
+
+    reg        fifo_wr_en, fifo_rd_en;
+
+    // ── Instância: RAM FSM (versão IP) ───────────────────────
+    ram_fsm_ip u_ram_fsm (
+        .clk      (clk),
+        .rst_n    (rst_n),
+        .cs       (ram_cs),
+        .we       (ram_we),
+        .oe       (ram_oe),
+        .addr     (addr_in),
+        .din      (din_in),
+        .dout     (ram_dout),
+        .ready    (ram_rdy),
+        .ram_wren (ip_wren),
+        .ram_rden (ip_rden),
+        .ram_addr (ip_addr),
+        .ram_data (ip_data),
+        .ram_q    (ip_q)
+    );
+
+    // ── Instância: IP Single-Port RAM ────────────────────────
+    //   Em síntese: substitua este stub pelo módulo .qip real.
+    //   O nome do módulo deve coincidir com o que você salvou
+    //   no MegaWizard (ex: ram_sp_ip).
+    ram_sp_ip u_ram_ip (
+        .clock   (clk),
+        .wren    (ip_wren),
+        .rden    (ip_rden),
+        .address (ip_addr),
+        .data    (ip_data),
+        .q       (ip_q)
+    );
+
+    // ── Instância: Input Buffer FIFO ─────────────────────────
+    input_buffer_fifo #(
+        .IN_WIDTH  (64),
+        .BUF_DEPTH (BUF_DEPTH),
+        .OUT_WIDTH (OUT_WIDTH)
+    ) u_fifo (
+        .clk       (clk),
+        .rst_n     (rst_n),
+        .push_data (ram_dout),
+        .wr_en     (fifo_wr_en),
+        .rd_en     (fifo_rd_en),
+        .data_out  (data_out),
+        .data_valid(data_valid),
+        .full      (fifo_full),
+        .empty     (fifo_empty)
+    );
+
+    assign ram_ready = ram_rdy;
+
+    // ── FSM de orquestração (inalterada) ─────────────────────
+    localparam [2:0]
+        CTRL_IDLE  = 3'b000,
+        CTRL_FETCH = 3'b001,
+        CTRL_WAIT  = 3'b010,
+        CTRL_PUSH  = 3'b011,
+        CTRL_DRAIN = 3'b100;
+
+    reg [2:0] ctrl_state, ctrl_next;
+
+    always @(posedge clk or negedge rst_n)
+        if (!rst_n) ctrl_state <= CTRL_IDLE;
+        else        ctrl_state <= ctrl_next;
+
+    always @(*) begin
+        ctrl_next = ctrl_state;
+        case (ctrl_state)
+            CTRL_IDLE:
+                if      (req_write)              ctrl_next = CTRL_FETCH;
+                else if (req_read && !fifo_full) ctrl_next = CTRL_FETCH;
+                else if (!fifo_empty)            ctrl_next = CTRL_DRAIN;
+            CTRL_FETCH: ctrl_next = CTRL_WAIT;
+            CTRL_WAIT:  if (ram_rdy) ctrl_next = req_write ? CTRL_IDLE : CTRL_PUSH;
+            CTRL_PUSH:  if (!fifo_full) ctrl_next = CTRL_DRAIN;
+            CTRL_DRAIN: if (fifo_empty) ctrl_next = CTRL_IDLE;
+            default:    ctrl_next = CTRL_IDLE;
+        endcase
+    end
+
+    always @(*) begin
+        ram_cs     = 1'b0;
+        ram_we     = 1'b0;
+        ram_oe     = 1'b0;
+        fifo_wr_en = 1'b0;
+        fifo_rd_en = 1'b0;
+
+        case (ctrl_state)
+            CTRL_FETCH: begin
+                ram_cs = 1'b1;
+                ram_we = req_write;
+                ram_oe = ~req_write;
+            end
+            CTRL_WAIT: begin
+                ram_cs = 1'b1;
+                ram_we = req_write;
+                ram_oe = ~req_write;
+            end
+            CTRL_PUSH:  fifo_wr_en = !fifo_full;
+            CTRL_DRAIN: fifo_rd_en = !fifo_empty;
+            default: ;
+        endcase
+    end
+
+endmodule
