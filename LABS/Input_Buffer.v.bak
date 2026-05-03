@@ -1,0 +1,131 @@
+module Input_Buffer #(
+    parameter DEPTH     = 16384,
+    parameter ADDR_BITS = 14,
+    parameter DATA_BITS = 64
+)(
+    input  wire                  clk,
+    input  wire                  rst_n,
+    input  wire                  start,
+    input  wire [ADDR_BITS:0]    num_words,
+    input  wire                  out_ready,
+
+    output reg  [DATA_BITS-1:0]  out_data,
+    output reg                   out_valid,
+    output reg                   done,
+    output reg                   error,
+    output reg  [2:0]            state_dbg
+);
+
+localparam [2:0]
+    IDLE      = 3'd0,
+    SET_ADDR  = 3'd1,
+    WAIT_ROM  = 3'd2,
+    LOAD_DATA = 3'd3,
+    SEND      = 3'd4,
+    DONE_ST   = 3'd5;
+
+reg [2:0] state, next_state;
+
+reg [ADDR_BITS-1:0] rom_addr;
+reg [ADDR_BITS:0]   word_index;
+reg [ADDR_BITS:0]   num_words_latch;
+
+wire [DATA_BITS-1:0] rom_q;
+
+Memoria u_rom (
+    .clock   (clk),
+    .address (rom_addr),
+    .q       (rom_q)
+);
+
+always @(*) begin
+    out_valid = (state == SEND);
+    done      = (state == DONE_ST);
+    state_dbg = state;
+end
+
+always @(*) begin
+    next_state = state;
+
+    case (state)
+        IDLE: begin
+            if (start) begin
+                if (num_words == 0 || num_words > DEPTH)
+                    next_state = IDLE;
+                else
+                    next_state = SET_ADDR;
+            end
+        end
+
+        SET_ADDR:  next_state = WAIT_ROM;
+        WAIT_ROM:  next_state = LOAD_DATA;
+        LOAD_DATA: next_state = SEND;
+
+        SEND: begin
+            if (out_ready) begin
+                if (word_index + 1 >= num_words_latch)
+                    next_state = DONE_ST;
+                else
+                    next_state = SET_ADDR;
+            end
+        end
+
+        DONE_ST: next_state = IDLE;
+
+        default: next_state = IDLE;
+    endcase
+end
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        state           <= IDLE;
+        rom_addr        <= {ADDR_BITS{1'b0}};
+        word_index      <= {(ADDR_BITS+1){1'b0}};
+        num_words_latch <= {(ADDR_BITS+1){1'b0}};
+        out_data        <= {DATA_BITS{1'b0}};
+        error           <= 1'b0;
+    end else begin
+        state <= next_state;
+
+        case (state)
+            IDLE: begin
+                error      <= 1'b0;
+                rom_addr   <= {ADDR_BITS{1'b0}};
+                word_index <= {(ADDR_BITS+1){1'b0}};
+                out_data   <= {DATA_BITS{1'b0}};
+
+                if (start) begin
+                    if (num_words == 0 || num_words > DEPTH)
+                        error <= 1'b1;
+                    else
+                        num_words_latch <= num_words;
+                end
+            end
+
+            SET_ADDR: begin
+                rom_addr <= word_index[ADDR_BITS-1:0];
+            end
+
+            WAIT_ROM: begin
+            end
+
+            LOAD_DATA: begin
+                out_data <= rom_q;
+            end
+
+            SEND: begin
+                if (out_ready)
+                    word_index <= word_index + 1'b1;
+            end
+
+            DONE_ST: begin
+            end
+
+            default: begin
+                state <= IDLE;
+            end
+        endcase
+    end
+end
+
+endmodule
