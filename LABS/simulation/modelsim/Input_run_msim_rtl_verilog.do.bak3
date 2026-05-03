@@ -1,0 +1,10 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -sv -work work +incdir+E:/LAB {E:/LAB/Input_Buffer.sv}
+vcom -93 -work work {E:/LAB/Memoria.vhd}
+

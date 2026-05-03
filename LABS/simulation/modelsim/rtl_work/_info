@@ -1,0 +1,102 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dF:/LABS/simulation/modelsim
+vInput_Buffer
+Z1 !s110 1777725501
+!i10b 1
+!s100 DJGnPM?ZZ4NlnJ[P9h8HP0
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IS]mV><fDKlU[X?J1aNldn3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1777725020
+8F:/LABS/Input_Buffer.v
+FF:/LABS/Input_Buffer.v
+!i122 1
+L0 1 144
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1777725501.000000
+!s107 F:/LABS/Input_Buffer.v|
+!s90 -reportprogress|300|-work|work|F:/LABS/Input_Buffer.v|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+n@input_@buffer
+Ememoria
+Z8 w1777484097
+Z9 DPx9 altera_mf 20 altera_mf_components 0 22 BN6nPmY:UEbXa[^5b@FTW1
+Z10 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z11 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 3
+R0
+Z12 8F:/LABS/Memoria.vhd
+Z13 FF:/LABS/Memoria.vhd
+l0
+L43 1
+VX?>KlARl6WDKdHYgNmm^`0
+!s100 i5lF;3HPJ<P8CVe:^Dcf32
+Z14 OV;C;2020.1;71
+32
+R1
+!i10b 1
+R5
+Z15 !s90 -reportprogress|300|-work|work|F:/LABS/Memoria.vhd|
+!s107 F:/LABS/Memoria.vhd|
+!i113 1
+R6
+Z16 tExplicit 1 CvgOpt 0
+Asyn
+R9
+R10
+R11
+DEx4 work 7 memoria 0 22 X?>KlARl6WDKdHYgNmm^`0
+!i122 3
+l57
+L53 33
+VbPMIXHl1cZ4ZnZ^[O<zf92
+!s100 ;@bnd4nd1[]bYXe<SbRfj1
+R14
+32
+R1
+!i10b 1
+R5
+R15
+Z17 !s107 F:/LABS/Memoria.vhd|
+!i113 1
+R6
+R16
+vtb_input_buffer
+R1
+!i10b 1
+!s100 RkOO<gb4lm7VdL2YdD^R30
+R2
+IDX926RYWT@F`Pb6V4=C@Z2
+R3
+R0
+w1777725435
+8F:/LABS/tb_input_buffer.v
+FF:/LABS/tb_input_buffer.v
+!i122 2
+L0 3 430
+R4
+r1
+!s85 0
+31
+R5
+!s107 F:/LABS/tb_input_buffer.v|
+!s90 -reportprogress|300|-work|work|F:/LABS/tb_input_buffer.v|
+!i113 1
+R6
+R7
