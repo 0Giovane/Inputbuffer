@@ -1,0 +1,114 @@
+# Reading pref.tcl
+# do Input_buffer_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/keduv/OneDrive/Desktop/LAAB {C:/Users/keduv/OneDrive/Desktop/LAAB/input_buffer_fifo.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:33:21 on Apr 12,2026
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/keduv/OneDrive/Desktop/LAAB" C:/Users/keduv/OneDrive/Desktop/LAAB/input_buffer_fifo.v 
+# -- Compiling module input_buffer_fifo
+# 
+# Top level modules:
+# 	input_buffer_fifo
+# End time: 20:33:21 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/Users/keduv/OneDrive/Desktop/LAAB {C:/Users/keduv/OneDrive/Desktop/LAAB/top_controller.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:33:21 on Apr 12,2026
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/keduv/OneDrive/Desktop/LAAB" C:/Users/keduv/OneDrive/Desktop/LAAB/top_controller.v 
+# -- Compiling module top_controller
+# 
+# Top level modules:
+# 	top_controller
+# End time: 20:33:21 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+vlog -reportprogress 300 -work work C:/Users/keduv/OneDrive/Desktop/LAAB/input_buffer_fifo.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:33:28 on Apr 12,2026
+# vlog -reportprogress 300 -work work C:/Users/keduv/OneDrive/Desktop/LAAB/input_buffer_fifo.v 
+# -- Compiling module input_buffer_fifo
+# 
+# Top level modules:
+# 	input_buffer_fifo
+# End time: 20:33:28 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/keduv/OneDrive/Desktop/LAAB/ram_fsm_ip.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:33:28 on Apr 12,2026
+# vlog -reportprogress 300 -work work C:/Users/keduv/OneDrive/Desktop/LAAB/ram_fsm_ip.v 
+# -- Compiling module ram_fsm_ip
+# 
+# Top level modules:
+# 	ram_fsm_ip
+# End time: 20:33:28 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/keduv/OneDrive/Desktop/LAAB/ram_sp_ip.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:33:28 on Apr 12,2026
+# vlog -reportprogress 300 -work work C:/Users/keduv/OneDrive/Desktop/LAAB/ram_sp_ip.v 
+# -- Compiling module ram_sp_ip
+# 
+# Top level modules:
+# 	ram_sp_ip
+# End time: 20:33:28 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/keduv/OneDrive/Desktop/LAAB/top_controller.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:33:28 on Apr 12,2026
+# vlog -reportprogress 300 -work work C:/Users/keduv/OneDrive/Desktop/LAAB/top_controller.v 
+# -- Compiling module top_controller
+# 
+# Top level modules:
+# 	top_controller
+# End time: 20:33:28 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work C:/Users/keduv/OneDrive/Desktop/LAAB/top_controller_ip_tb.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 20:33:28 on Apr 12,2026
+# vlog -reportprogress 300 -work work C:/Users/keduv/OneDrive/Desktop/LAAB/top_controller_ip_tb.v 
+# -- Compiling module top_controller_ip_tb
+# 
+# Top level modules:
+# 	top_controller_ip_tb
+# End time: 20:33:28 on Apr 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -l msim_transcript work.top_controller_ip_tb
+# vsim -gui -l msim_transcript work.top_controller_ip_tb 
+# Start time: 20:33:35 on Apr 12,2026
+# Loading work.top_controller_ip_tb
+# Loading work.top_controller
+# Loading work.input_buffer_fifo
+add wave -position insertpoint  \
+sim:/top_controller_ip_tb/BUF_DEPTH \
+sim:/top_controller_ip_tb/OUT_WIDTH \
+sim:/top_controller_ip_tb/clk \
+sim:/top_controller_ip_tb/rst_n \
+sim:/top_controller_ip_tb/req_read \
+sim:/top_controller_ip_tb/req_write \
+sim:/top_controller_ip_tb/addr_in \
+sim:/top_controller_ip_tb/din_in \
+sim:/top_controller_ip_tb/data_out \
+sim:/top_controller_ip_tb/data_valid \
+sim:/top_controller_ip_tb/fifo_full \
+sim:/top_controller_ip_tb/fifo_empty \
+sim:/top_controller_ip_tb/ram_ready
+run -all
+# ==> ESCREVENDO: 0xDEADBEEFCAFE0011
+# ==> LENDO: addr 0x0010
+# ==> MONITORANDO SAIDA...
+#     [350000 ns] DATA_OUT = 0xcafe0011
+# ==> TESTE CONCLUIDO.
+# ** Note: $stop    : C:/Users/keduv/OneDrive/Desktop/LAAB/top_controller_ip_tb.v(73)
+#    Time: 630 ns  Iteration: 1  Instance: /top_controller_ip_tb
+# Break in Module top_controller_ip_tb at C:/Users/keduv/OneDrive/Desktop/LAAB/top_controller_ip_tb.v line 73
+# End time: 20:36:32 on Apr 12,2026, Elapsed time: 0:02:57
+# Errors: 0, Warnings: 0
