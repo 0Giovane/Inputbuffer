@@ -1,0 +1,141 @@
+# Reading pref.tcl
+# do Input_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+F:/LABS {F:/LABS/Input_Buffer.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:27:15 on May 05,2026
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/LABS" F:/LABS/Input_Buffer.v 
+# -- Compiling module Input_Buffer
+# 
+# Top level modules:
+# 	Input_Buffer
+# End time: 23:27:15 on May 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+vlog -reportprogress 300 -work work F:/LABS/Input_Buffer.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:27:23 on May 05,2026
+# vlog -reportprogress 300 -work work F:/LABS/Input_Buffer.v 
+# -- Compiling module Input_Buffer
+# 
+# Top level modules:
+# 	Input_Buffer
+# End time: 23:27:23 on May 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work F:/LABS/tb_input_buffer.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:27:23 on May 05,2026
+# vlog -reportprogress 300 -work work F:/LABS/tb_input_buffer.v 
+# -- Compiling module tb_input_buffer
+# 
+# Top level modules:
+# 	tb_input_buffer
+# End time: 23:27:23 on May 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work F:/LABS/Memoria.vhd
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:27:23 on May 05,2026
+# vcom -reportprogress 300 -work work F:/LABS/Memoria.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package altera_mf_components
+# -- Compiling entity Memoria
+# -- Compiling architecture SYN of memoria
+# End time: 23:27:23 on May 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -gui -l msim_transcript work.tb_input_buffer
+# vsim -gui -l msim_transcript work.tb_input_buffer 
+# Start time: 23:27:30 on May 05,2026
+# Loading work.tb_input_buffer
+# Loading work.Input_Buffer
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading altera_mf.altera_mf_components
+# Loading work.memoria(syn)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading altera_mf.altera_common_conversion(body)
+# Loading altera_mf.altera_device_families(body)
+# Loading altera_mf.altsyncram(translated)
+add wave -position insertpoint  \
+sim:/tb_input_buffer/CLK_PERIOD \
+sim:/tb_input_buffer/DEPTH \
+sim:/tb_input_buffer/ADDR_BITS \
+sim:/tb_input_buffer/DATA_BITS \
+sim:/tb_input_buffer/REPEAT_COUNT \
+sim:/tb_input_buffer/clk \
+sim:/tb_input_buffer/rst_n \
+sim:/tb_input_buffer/start \
+sim:/tb_input_buffer/out_data \
+sim:/tb_input_buffer/out_valid \
+sim:/tb_input_buffer/done \
+sim:/tb_input_buffer/rom_addr \
+sim:/tb_input_buffer/rom_q \
+sim:/tb_input_buffer/rom_clock \
+sim:/tb_input_buffer/ref_mem \
+sim:/tb_input_buffer/k \
+sim:/tb_input_buffer/file_out \
+sim:/tb_input_buffer/pass_count \
+sim:/tb_input_buffer/fail_count \
+sim:/tb_input_buffer/total_errors \
+sim:/tb_input_buffer/cycle_counter
+# (vsim-4077) Logging very large object: /tb_input_buffer/ref_mem
+run -all
+# ============================================================
+#  TESTBENCH - INPUT_BUFFER SEM PAUSA
+# ============================================================
+# 
+# TC1 - Stream completo continuo
+# [TC1] PASS ciclo=11 rep=0 addr=0 data=abcdef0123456789
+# [TC1] PASS ciclo=12 rep=0 addr=1 data=0123456789abcdef
+# [TC1] PASS ciclo=13 rep=0 addr=2 data=fedcba9876543210
+# [TC1] PASS ciclo=14 rep=0 addr=3 data=1122334455667788
+# [TC1] PASS ciclo=15 rep=0 addr=4 data=8877665544332211
+# [TC1] PASS ciclo=16 rep=0 addr=5 data=aabbccddeeff0011
+# [TC1] PASS ciclo=17 rep=0 addr=6 data=1100ffeeddccbbaa
+# [TC1] PASS ciclo=18 rep=0 addr=7 data=deadbeefcafebabe
+# [TC1] PASS ciclo=19 rep=0 addr=8 data=cafebabdeadbeef0
+# [TC1] PASS ciclo=20 rep=0 addr=9 data=0f0f0f0f0f0f0f0f
+# [TC1] PASS ciclo=21 rep=0 addr=10 data=f0f0f0f0f0f0f0f0
+# [TC1] PASS ciclo=22 rep=0 addr=11 data=aaaaaaaaaaaaaaaa
+# [TC1] PASS ciclo=23 rep=0 addr=12 data=5555555555555555
+# [TC1] PASS ciclo=24 rep=0 addr=13 data=ffffffffffffffff
+# [TC1] PASS ciclo=25 rep=0 addr=14 data=0000000000000001
+# [TC1] PASS ciclo=26 rep=0 addr=15 data=8000000000000000
+# [TC1] PASS ciclo=27 rep=0 addr=16 data=0000000000000000
+# [TC1] PASS ciclo=28 rep=0 addr=17 data=0000000000000000
+# [TC1] PASS ciclo=29 rep=0 addr=18 data=0000000000000000
+# [TC1] PASS ciclo=30 rep=0 addr=19 data=0000000000000000
+# [TC1] TOTAL OK recebeu=32768 words
+# [TC1] DONE OK
+# [TC1] CICLOS total=32769 transfers=32768
+# [TC1] PASS
+# 
+# TC2 - Reset durante transmissao
+# [TC2] RESET PASS
+# 
+# TC3 - Verifica retorno ao endereco 0 apos reset
+# [TC3] PASS voltou para addr 0
+# 
+# ============================================================
+#  RESULTADO FINAL
+#  PASS TESTS=3 FAIL TESTS=0 ERROS INTERNOS=0
+# >>> TODOS OS TESTES PASSARAM <<<
+# ============================================================
+# ** Note: $finish    : F:/LABS/tb_input_buffer.v(380)
+#    Time: 328476 ns  Iteration: 0  Instance: /tb_input_buffer
+# 1
+# Break in Module tb_input_buffer at F:/LABS/tb_input_buffer.v line 380
+# End time: 23:32:20 on May 05,2026, Elapsed time: 0:04:50
+# Errors: 0, Warnings: 0
