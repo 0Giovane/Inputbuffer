@@ -1,0 +1,102 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dF:/Teste_32bits/simulation/modelsim
+vInput_Buffer
+Z1 !s110 1779571919
+!i10b 1
+!s100 GZe[^GfBlWX:LRLK[oK?T3
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I5V1fj?l0MmR>aHW`[<1e83
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1779571660
+8F:/Teste_32bits/Input_Buffer.v
+FF:/Teste_32bits/Input_Buffer.v
+!i122 2
+L0 1 131
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1779571919.000000
+!s107 F:/Teste_32bits/Input_Buffer.v|
+!s90 -reportprogress|300|-work|work|F:/Teste_32bits/Input_Buffer.v|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+n@input_@buffer
+Ememoria
+Z8 w1779571632
+Z9 DPx9 altera_mf 20 altera_mf_components 0 22 BN6nPmY:UEbXa[^5b@FTW1
+Z10 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z11 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 4
+R0
+Z12 8F:/Teste_32bits/memoria.vhd
+Z13 FF:/Teste_32bits/memoria.vhd
+l0
+L43 1
+VPVGB4fRiELkjOUmJbF;^n1
+!s100 f[3l>Gck^K=z86lOj^iUT0
+Z14 OV;C;2020.1;71
+32
+R1
+!i10b 1
+R5
+Z15 !s90 -reportprogress|300|-work|work|F:/Teste_32bits/memoria.vhd|
+Z16 !s107 F:/Teste_32bits/memoria.vhd|
+!i113 1
+R6
+Z17 tExplicit 1 CvgOpt 0
+Asyn
+R9
+R10
+R11
+DEx4 work 7 memoria 0 22 PVGB4fRiELkjOUmJbF;^n1
+!i122 4
+l57
+Z18 L53 33
+V8[<h=GO49@5@Y3ni`^Y_82
+Z19 !s100 >fQCZ1H9H:aAJ`9UhCi?[2
+R14
+32
+R1
+!i10b 1
+R5
+R15
+R16
+!i113 1
+R6
+R17
+vtb_input_buffer
+R1
+!i10b 1
+!s100 ?[2hQSh@`2e2f0m1]AZY`0
+R2
+IO3NCfXgWlgOjAOXzIP]?^3
+R3
+R0
+w1779571670
+8F:/Teste_32bits/tb_input_buffer.v
+FF:/Teste_32bits/tb_input_buffer.v
+!i122 3
+L0 3 477
+R4
+r1
+!s85 0
+31
+R5
+!s107 F:/Teste_32bits/tb_input_buffer.v|
+!s90 -reportprogress|300|-work|work|F:/Teste_32bits/tb_input_buffer.v|
+!i113 1
+R6
+R7

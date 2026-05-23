@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sat May 23 18:31:03 2026
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : Input_Buffer
+Top-level Entity Name : TOP
+Family : Cyclone IV E
+Total logic elements : 198
+    Total combinational functions : 196
+    Dedicated logic registers : 71
+Total registers : 71
+Total pins : 39
+Total virtual pins : 0
+Total memory bits : 1,048,576
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
