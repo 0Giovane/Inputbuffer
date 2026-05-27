@@ -10,11 +10,15 @@ module Input_Buffer #(
     input  wire                  prepare,
     input  wire                  go,
 
-    input  wire [31:0]  rom_q,
-    output reg  [14:0]  rom_addr,
+    // =========================================================================
+    // ALTERAÇÃO: Valores fixos substituídos pelos parâmetros
+    // =========================================================================
+    input  wire [DATA_BITS-1:0]  rom_q,       // Antes era [31:0]
+    output reg  [ADDR_BITS-1:0]  rom_addr,    // Antes era [14:0]
     output wire                  rom_clock,
 
-    output wire [31:0]  out_data,
+    output wire [DATA_BITS-1:0]  out_data,    // Antes era [31:0]
+    // =========================================================================
     output reg                   out_valid,
     output reg                   ready_to_stream,
     output reg                   done
@@ -33,7 +37,7 @@ localparam TOTAL_WORDS = DEPTH * REPEAT_COUNT;
 
 reg [1:0] state;
 
-reg [31:0] valid_count;
+reg [31:0] valid_count; // Mantido em 32 bits (contador genérico para o total de leituras)
 reg [ADDR_BITS-1:0] next_addr;
 
 always @(posedge clk or negedge rst_n) begin

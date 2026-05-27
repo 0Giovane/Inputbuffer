@@ -1,7 +1,0 @@
-
-State Machine - |TOP|Input_Buffer:inst1|state
-Name state.RUN state.READY state.WARMUP state.IDLE 
-state.IDLE 0 0 0 0 
-state.WARMUP 0 0 1 1 
-state.READY 0 1 0 1 
-state.RUN 1 0 0 1 
